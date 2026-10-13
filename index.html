@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#050807">
+  <title>GLITCH // Cyber Simulation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="GLITCH home"><span class="brand-mark">G</span><span>GLITCH<span class="muted">.SYS</span><small>CYBER SIMULATION</small></span></a>
+    <div class="status"><span class="pulse"></span> النظام يعمل <b>OFFLINE</b></div>
+    <button id="menuBtn" class="icon-btn" aria-label="فتح القائمة">☰</button>
+  </header>
+
+  <main class="shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="side-label">القائمة الرئيسية</div>
+      <button class="nav-btn active" data-view="terminal"><span>⌘</span> الطرفية</button>
+      <button class="nav-btn" data-view="scanner"><span>⌁</span> محاكي الفحص</button>
+      <button class="nav-btn" data-view="secrets"><span>◈</span> الملفات السرية</button>
+      <button class="nav-btn" data-view="glitch"><span>▧</span> تأثيرات GLITCH</button>
+      <div class="side-note"><span class="tiny-dot"></span> وضع المحاكاة الآمنة<br><small>لا يتم الاتصال بأي خادم</small></div>
+    </aside>
+
+    <section class="content">
+      <div class="hero">
+        <div>
+          <div class="eyebrow"><span class="tiny-dot"></span> SECURE SANDBOX / 01</div>
+          <h1>مرحبًا بك في <span>GLITCH</span></h1>
+          <p>مختبر سيبراني خيالي. جرّب الأوامر، شغّل الفحوصات الوهمية، واكتشف الرسائل المخفية.</p>
+        </div>
+        <div class="hero-stamp"><span>SIM</span><small>SIMULATION<br>ONLY</small></div>
+      </div>
+
+      <div class="stats">
+        <article class="stat-card"><span>حالة النظام</span><strong><i class="dot-green"></i> مستقر</strong><small>LOCAL SANDBOX</small></article>
+        <article class="stat-card"><span>عمليات المحاكاة</span><strong id="runCount">000</strong><small>SESSION TASKS</small></article>
+        <article class="stat-card"><span>مستوى التهديد</span><strong class="green-text">صفر</strong><small>NO REAL NETWORK</small></article>
+      </div>
+
+      <section class="view active" id="view-terminal">
+        <div class="section-head"><div><span class="section-icon">⌘</span><div><h2>الطرفية التفاعلية</h2><p>اكتب أمرًا أو اختر أمرًا جاهزًا للتجربة.</p></div></div><button class="subtle-btn" id="clearTerminal">مسح الشاشة</button></div>
+        <div class="terminal">
+          <div class="terminal-head"><div class="window-dots"><i></i><i></i><i></i></div><span>glitch@local: ~</span><span class="terminal-live">● LIVE</span></div>
+          <div class="terminal-output" id="terminalOutput" aria-live="polite">
+            <p class="out-muted">GLITCH TERMINAL v1.0.4</p>
+            <p>هذه بيئة محاكاة محلية. اكتب <b>help</b> لعرض الأوامر المتاحة.</p>
+            <p class="out-success">[READY] لا يوجد اتصال خارجي.</p>
+          </div>
+          <form id="commandForm" class="command-form" autocomplete="off">
+            <label for="commandInput">visitor@glitch <span>❯</span></label>
+            <input id="commandInput" name="command" placeholder="اكتب help ثم اضغط Enter..." spellcheck="false" autocapitalize="off">
+            <button type="submit" aria-label="تنفيذ الأمر">➜</button>
+          </form>
+        </div>
+        <div class="quick-commands"><span>أوامر سريعة:</span><button data-command="help">help</button><button data-command="scan">scan</button><button data-command="whoami">whoami</button><button data-command="decrypt">decrypt</button><button data-command="matrix">matrix</button></div>
+      </section>
+
+      <section class="view" id="view-scanner">
+        <div class="section-head"><div><span class="section-icon">⌁</span><div><h2>محاكي فحص النظام</h2><p>فحص تمثيلي للواجهة فقط — لا يفحص جهازك أو الإنترنت.</p></div></div></div>
+        <div class="panel scanner-panel">
+          <div class="scan-radar"><div class="radar-ring ring1"></div><div class="radar-ring ring2"></div><div class="radar-ring ring3"></div><div class="radar-sweep"></div><span>SIM<br>SCAN</span></div>
+          <div class="scan-info"><div class="field-label">هدف المحاكاة</div><div class="fake-target">LOCAL_SANDBOX <span>● آمن</span></div><p>ابدأ الفحص لمشاهدة مراحل تحليل خيالية ونتائج تجريبية.</p><button class="primary-btn" id="startScan">▶ بدء الفحص الوهمي</button></div>
+        </div>
+        <div class="progress-wrap hidden" id="scanProgress"><div class="progress-title"><span id="scanStage">تهيئة الفحص...</span><span id="scanPercent">0%</span></div><div class="progress-track"><div id="progressBar"></div></div><div class="scan-log" id="scanLog"></div></div>
+        <div class="results-grid hidden" id="scanResults"><article><span>نقاط فحص تمثيلية</span><strong>08</strong></article><article><span>ثغرات حقيقية</span><strong class="green-text">غير مفحوصة</strong></article><article><span>نتيجة المحاكاة</span><strong>نظيف</strong></article></div>
+      </section>
+
+      <section class="view" id="view-secrets">
+        <div class="section-head"><div><span class="section-icon">◈</span><div><h2>الأرشيف السري</h2><p>افتح الملفات بكلمات المرور الموجودة داخل الألغاز.</p></div></div></div>
+        <div class="secret-grid">
+          <article class="secret-card"><div class="file-icon">▤</div><div><span class="file-tag">FILE_001 / PUBLIC</span><h3>ملاحظة النظام</h3><p>ملف تمهيدي متاح للجميع.</p></div><button class="open-file" data-file="public">فتح الملف ↗</button></article>
+          <article class="secret-card locked"><div class="file-icon">▣</div><div><span class="file-tag">FILE_002 / ENCRYPTED</span><h3>الرسالة المشفّرة</h3><p>يحتاج إلى رمز فك التشفير.</p></div><button class="open-file" data-file="encrypted">فك القفل ↗</button></article>
+          <article class="secret-card locked"><div class="file-icon">◈</div><div><span class="file-tag">FILE_003 / CLASSIFIED</span><h3>ملف الظل</h3><p>تلميح: الرمز هو كلمة السر الافتراضية في الطرفية.</p></div><button class="open-file" data-file="shadow">فتح الملف ↗</button></article>
+        </div>
+        <div class="secret-output hidden" id="secretOutput"><button class="close-secret" id="closeSecret">×</button><span class="file-tag" id="secretTag">ARCHIVE OUTPUT</span><h3 id="secretTitle"></h3><p id="secretText"></p></div>
+      </section>
+
+      <section class="view" id="view-glitch">
+        <div class="section-head"><div><span class="section-icon">▧</span><div><h2>مختبر التأثيرات</h2><p>فعّل مؤثرات بصرية على الصفحة فقط.</p></div></div></div>
+        <div class="effect-grid">
+          <article class="effect-card"><div class="effect-preview glitch-preview">GLITCH</div><h3>تشويش الشاشة</h3><p>وميض وتأثير رقمي قصير.</p><button class="primary-btn effect-btn" data-effect="glitch">تشغيل التأثير</button></article>
+          <article class="effect-card"><div class="effect-preview alert-preview">SYSTEM ERROR</div><h3>إنذار تجريبي</h3><p>رسالة خطأ خيالية قابلة للإغلاق.</p><button class="primary-btn effect-btn" data-effect="alert">تشغيل التأثير</button></article>
+          <article class="effect-card"><div class="effect-preview matrix-preview" id="matrixPreview">010101<br>101100<br>001011</div><h3>مطر الأرقام</h3><p>حركة زخرفية داخل بطاقة العرض.</p><button class="primary-btn effect-btn" data-effect="matrix">تشغيل التأثير</button></article>
+        </div>
+      </section>
+
+      <footer><span>GLITCH.SYS © 2026</span><span>مصمم للتجربة والتعلّم فقط <b>•</b> لا اختراق حقيقي</span></footer>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status"></div>
+  <div class="modal hidden" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-box"><div class="modal-mark">!</div><h2 id="modalTitle">تنبيه المحاكاة</h2><p id="modalText"></p><button class="primary-btn" id="modalClose">فهمت</button></div></div>
+  <script src="script.js"></script>
+</body>
+</html>
